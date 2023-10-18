@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Đăng ký thành công</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body{
+        font-family: sans-serif;
+        background-color: white;
+        text-align: center;
+        padding: 30px;
+        align-items: center;
+    }
+    .container{
+        width: 200px;
+        height: 400px;
+        margin-top: 0 auto;
+        background-color: aquamarine;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+    h2 {
+            color: #4CAF50;
+        }
+
+    p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <h2>Thông tin đăng ký</h2>
+        <div id="appData"></div>
+    </div>
+
+    <script>
+        fetch("thongtin.txt").then(function(response) {
+            response.text().then(function(text) {
+                var lines = text.split("|");
+                var html = "";
+                for (var i = 0; i < lines.length; i++) {
+                    html += "<p>" + lines[i] + "</p>";
+                }
+                document.getElementById("appData").innerHTML = html;
+            });
+        });
+    </script>
+
+</body>
+</html>
